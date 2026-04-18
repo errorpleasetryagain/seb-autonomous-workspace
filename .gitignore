@@ -1,0 +1,31 @@
+# Credentials & Secrets
+credentials.json
+*.env
+.env.local
+*.pem
+*.key
+*.secret
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Build outputs
+dist/
+build/
+.next/
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+tmp/
+temp/
