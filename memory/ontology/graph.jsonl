@@ -22,3 +22,12 @@
 {"op":"relate","from":"cron_001","rel":"for_project","to":"proj_002","properties":{},"created":"2026-04-16T22:20:00Z"}
 {"op":"create","entity":{"id":"cron_002","type":"Task","properties":{"title":"Morning briefing cron job","status":"active","priority":"high"},"relations":[],"created":"2026-04-16T22:20:00Z","updated":"2026-04-16T22:20:00Z"}}
 {"op":"relate","from":"cron_002","rel":"for_project","to":"proj_002","properties":{},"created":"2026-04-16T22:20:00Z"}
+{"id":"autonomous-portal","type":"Project","name":"Autonomous Portal","status":"live","progress":90,"url":"http://localhost:3001","github":"https://github.com/errorpleasetryagain/seb-autonomous-workspace","created":"2026-04-18"}
+{"id":"dashboard-ticker","type":"Feature","name":"Status Ticker","parent":"autonomous-portal","style":"NASDAQ scroll","emojis":["🤖","👾"]}
+{"id":"agent-chat","type":"Feature","name":"Agent Chat","parent":"autonomous-portal","polling":"3s","integration":"openclaw"}
+{"id":"browser-control","type":"Feature","name":"Browser Control","parent":"autonomous-portal","tech":"playwright","capabilities":["navigate","extract","screenshot"]}
+{"id":"autonomy-protocol","type":"System","name":"Dashboard Autonomy","parent":"autonomous-portal","interval":"30min","config":"AUTONOMY.md"}
+{"id":"relation-portal-has-ticker","type":"Relation","from":"autonomous-portal","to":"dashboard-ticker","relation":"has_feature"}
+{"id":"relation-portal-has-chat","type":"Relation","from":"autonomous-portal","to":"agent-chat","relation":"has_feature"}
+{"id":"relation-portal-has-browser","type":"Relation","from":"autonomous-portal","to":"browser-control","relation":"has_feature"}
+{"id":"relation-portal-has-autonomy","type":"Relation","from":"autonomous-portal","to":"autonomy-protocol","relation":"has_system"}

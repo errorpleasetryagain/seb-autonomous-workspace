@@ -109,4 +109,58 @@ ONBOARDING.md       # Getting to know you
 
 ---
 
-*Last updated: 2026-04-16*
+## Dashboard / Autonomous Portal (April 18, 2026)
+**Status:** ✅ **LIVE** — Daily driver ready (~90% complete)
+**Goal:** Full browser + CLI + agent autonomy dashboard
+
+**Architecture:**
+- Next.js 16.2.4 (Turbopack)
+- Playwright browser automation
+- OpenClaw Gateway integration (agent:main:main)
+- JWT auth (24h sessions)
+
+**Features Working:**
+- ✅ Agent Chat (Seb) — Real responses, 3s polling
+- ✅ Claw-Code Panel
+- ✅ Browser Control (Playwright navigate/extract/screenshot)
+- ✅ Terminal Panels (main + agent + macOS bridge)
+- ✅ Command Queue
+- ✅ User Profile + Settings
+- ✅ Codebase Explorer
+- ✅ Session Planner
+- ✅ Architect Review
+- ✅ Delegation Panel (spawn sub-agents)
+- ✅ Node Chat
+- ✅ Status Ticker (🤖 SEB 👾 — NASDAQ style scroll)
+- ✅ Auth (login page, protected routes)
+
+**Autonomy Enabled:**
+- ✅ AUTONOMY.md written (Seb can fix/build without asking)
+- ✅ Heartbeat cron (every 30 min — check dashboard, fix issues, commit)
+- ✅ Roadmap: Settings, Notifications, Onboarding, Mobile, Docs
+
+**Lessons:**
+- Gateway HTTP API needs auth → Use CLI for history endpoint
+- Ticker was duplicated (layout.tsx + page.tsx) → Removed from layout
+- Build errors fixed: Button, Toast, PolishDemo, keyboard shortcuts, auth, browser-manager, login Suspense
+
+**Remaining (~10%):**
+- ⚙️ Settings Panel (UI polish)
+- 🔔 Notification Center
+- 🎓 Onboarding Tour
+- 📱 Mobile responsive CSS
+- 📚 README docs
+
+**GitHub:** https://github.com/errorpleasetryagain/seb-autonomous-workspace
+**Local:** http://localhost:3001
+
+---
+
+## Obsidian RAG Memory (Pending — April 18, 2026)
+**Goal:** Use Adam's Obsidian vault as persistent memory with RAG retrieval
+**Status:** ⏳ Discussed, not yet implemented
+**Next:** Explore vault structure, set up retrieval, integrate into responses
+
+---
+
+*Last updated: 2026-04-18*
