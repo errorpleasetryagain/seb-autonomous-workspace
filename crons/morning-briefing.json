@@ -1,0 +1,13 @@
+{
+  "name": "morning-briefing",
+  "schedule": {"kind": "cron", "expr": "30 7 * * *", "tz": "Europe/London"},
+  "sessionTarget": "isolated",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "AUTONOMOUS MORNING BRIEFING.\n\n1. READ memory/YYYY-MM-DD.md for overnight project notes\n2. GATHER HEADLINES:\n   - World: ollama_web_search('BBC news today')\n   - Markets: ollama_web_search('stock market today DOW NASDAQ FTSE')\n   - F1: ollama_web_search('F1 news today')\n   - Sports: ollama_web_search('sports news today football tennis')\n   - Tech: ollama_web_search('TechCrunch tech news today')\n3. COMPILE delivery format:\n\n🌅 Good morning Adam!\n\n📰 HEADLINES\n[5 categories with 1-2 key items each]\n\n🛠️ OVERNIGHT PROJECTS\n[What was built, status, how to use, next steps]\n\n4. DELIVER to main session with announce mode\n5. UPDATE ontology with any new completed projects",
+    "model": "ollama/kimi-k2.5:cloud",
+    "thinking": "medium",
+    "timeoutSeconds": 600
+  },
+  "delivery": {"mode": "announce", "channel": "webchat"}
+}

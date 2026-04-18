@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seb's Mission Control</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    .card { background: #1a1a1a; border: 1px solid #333; border-radius: 8px; padding: 1.5rem; margin: 1rem 0; }
+    .card h2 { color: #4ade80; font-family: 'JetBrains Mono', monospace; }
+    .status-ok { color: #4ade80; }
+    .status-bad { color: #f87171; }
+    .metric { background: #262626; padding: 1rem; border-radius: 6px; margin: 0.5rem 0; }
+    .btn { background: #4ade80; color: #000; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+    .btn:hover { background: #22c55e; }
+    #last-updated { font-size: 0.875rem; color: #6b7280; margin-top: 1rem; }
+  </style>
+</head>
+<body class="p-8 max-w-6xl mx-auto">
+  <h1 class="text-3xl font-bold mb-6" style="color: #4ade80;">🚀 Seb's Mission Control</h1>
+  
+  <div class="card">
+    <h2 class="text-xl mb-4">Site Health Check</h2>
+    <div id="site-health"></div>
+  </div>
+  
+  <div class="card">
+    <h2 class="text-xl mb-4">Affiliate Pipeline</h2>
+    <div id="affiliate-status"></div>
+  </div>
+  
+  <div class="card">
+    <h2 class="text-xl mb-4">Revenue Tracker</h2>
+    <div class="metric">This Month: £0</div>
+    <div class="metric">Target: £3,000-8,000</div>
+    <div style="margin-top: 1rem;">
+      <button class="btn" onclick="refreshData()">Refresh</button>
+      <button class="btn" onclick="window.open('https://app.mailerlite.com', '_blank')">MailerLite</button>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2 class="text-xl mb-4">🏠 Moving to London</h2>
+    <div class="metric">Savings: £0 / £12,000 (0%)</div>
+    <div class="metric">Viewings This Week: 0</div>
+    <div class="metric">Applications Pending: 0</div>
+    <div class="metric" style="margin-top: 1rem;">Next Scraper Run: Saturday 9 AM</div>
+    <div style="margin-top: 1rem;">
+      <button class="btn" onclick="window.open('https://www.notion.so/Moving-to-London-Adam-Amy-33aba4a2a71681e390a4e1580805c71d', '_blank')">Open Notion Dashboard</button>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2 class="text-xl mb-4">Quick Actions</h2>
+    <button class="btn" onclick="runMasterFix()">Run Master Fix</button>
+    <button class="btn" onclick="checkSites()">Check All Sites</button>
+    <button class="btn" onclick="openNotion()">Open Notion</button>
+  </div>
+  
+  <p id="last-updated">Last updated: never</p>
+
+  <script>
+    const SITES = [
+      { name: 'MaleOptimal', url: 'https://maleoptimal.co.uk', path: '/', healthy: null },
+      { name: 'FuelOptimal', url: 'https://fueloptimal.co.uk', path: '/blog', healthy: null },
+      { name: 'GLP1Guide', url: 'https://glp1guide.co.uk', path: '/guides', healthy: null },
+      { name: 'AIByRole', url: 'https://aibyrole.co.uk', path: '/tools', healthy: null },
+      { name: 'TradePick', url: 'https://tradepick.co.uk', path: '/lists', healthy: null },
+      { name: 'RemotePivot', url: 'https://remotepivot.co.uk', path: '/', healthy: null },
+      { name: 'LiftLab', url: 'https://liftlab.co.uk', path: '/', healthy: null },
+      { name: 'GLWC', url: 'https://glwc.life', path: '/', healthy: null }
+    ];
+    
+    const AFFILIATES = [
+      { name: 'Medichecks', status: 'pending', url: 'https://medichecks.com/partners/affiliates' },
+      { name: 'Optimale', status: 'pending', url: 'https://optimale.co.uk/affiliate-scheme', commission: '£30-50/ref' },
+      { name: 'Descript', status: 'pending', url: 'https://descript.com/partner' }
+    ];
+    
+    async function checkSites() {
+      document.getElementById('site-health').innerHTML = SITES.map(s => 
+        `&#36;{s.name}: ${s.healthy === null ? '⏳ checking...' : s.healthy ? '✅ OK' : '❌ FAIL'}&#36;{s.path}&#36;{s.name === 'FuelOptimal' || s.name === 'GLP1Guide' ? ' (auto-fixed)' : ''}`
+      ).join('<br>');
+      
+      for (const site of SITES) {
+        try {
+          const response = await fetch(site.url + site.path, {method: 'HEAD', mode: 'no-cors'});
+          site.healthy = response.ok;
+        } catch (e) {
+          site.healthy = false;
+        }
+        document.getElementById('site-health').innerHTML = SITES.map(s =
+          `&#36;{s.name}: &#36;{s.healthy ? '✅ OK' : '❌ FAIL'}`
+        ).join('<br>');
+      }
+    }
+    
+    function refreshData() {
+      document.getElementById('last-updated').textContent = 'Updated: ' + new Date().toLocaleString();
+      checkSites();
+      checkAffiliates();
+    }
+    
+    function checkAffiliates() {
+      document.getElementById('affiliate-status').innerHTML = AFFILIATES.map(a =
+        `&#36;{a.name}: &#36;{a.status === 'active' ? '✅ Active' : a.status === 'pending' ? '⏳ Pending' : '❌ Inactive'} — &#36;{a.commission}`
+      ).join('<br>');
+    }
+    
+    function runMasterFix() {
+      alert('Would run: ~/.openclaw/workspace/master-fix.sh');
+    }
+    
+    function openNotion() {
+      window.open('https://www.notion.so/adam-wolfgang-9c1067d8c3f04e2e82a4695b94846a5fd', '_blank');
+    }
+    
+    // Auto-check on load
+    checkSites();
+    checkAffiliates();
+  </script>
+</body>
+</html>

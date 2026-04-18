@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Website Builder Prompts — All 7 Sites</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0D0D0D;
+    --surface: #141414;
+    --border: #2a2a2a;
+    --text: #E8E8E8;
+    --muted: #888;
+    --red: #C0392B;
+    --orange: #E67E22;
+    --green: #2D6A4F;
+    --cyan: #00D4FF;
+    --purple: #7B2FBE;
+    --teal: #00C896;
+    --blue: #2563EB;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+  header { padding: 60px 40px 40px; border-bottom: 1px solid var(--border); max-width: 1200px; margin: 0 auto; }
+  header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 72px; color: #fff; line-height: 1; }
+  header p { color: var(--muted); font-size: 18px; margin-top: 12px; }
+  header .meta { display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap; }
+  header .tag { background: #1a1a1a; border: 1px solid var(--border); padding: 4px 12px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  nav { position: sticky; top: 0; background: rgba(13,13,13,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 16px 40px; z-index: 100; }
+  nav ul { list-style: none; display: flex; gap: 24px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-family: 'JetBrains Mono', monospace; transition: color .2s; }
+  nav a:hover { color: #fff; }
+  .site-section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+  .site-header { display: flex; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
+  .site-number { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--muted); padding-top: 8px; }
+  .site-meta h2 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 1; }
+  .site-meta .tagline { color: var(--muted); font-size: 16px; margin-top: 4px; }
+  .accent-bar { width: 40px; height: 3px; margin-top: 12px; border-radius: 2px; }
+  .prompt-block { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 32px; margin-bottom: 24px; position: relative; }
+  .prompt-block .builder-label { position: absolute; top: -12px; left: 20px; background: var(--bg); padding: 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .prompt-block pre { font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.8; white-space: pre-wrap; color: #D4D4D4; }
+  .copy-btn { position: absolute; top: 16px; right: 16px; background: #1a1a1a; border: 1px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 12px; font-family: 'JetBrains Mono', monospace; transition: all .2s; }
+  .copy-btn:hover { background: #2a2a2a; color: #fff; }
+  .copy-btn.copied { color: #4ade80; border-color: #4ade80; }
+  .builders-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .builder-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 16px 20px; }
+  .builder-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .builder-card p { font-size: 13px; color: var(--muted); }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; margin: 3px; }
+  .tip-box { background: #0f1f0f; border: 1px solid #2D6A4F; border-radius: 6px; padding: 16px 20px; margin-bottom: 24px; font-size: 14px; }
+  .tip-box strong { color: #4ade80; }
+  footer { padding: 60px 40px; text-align: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .highlight { color: #fff; }
+  @media (max-width: 768px) {
+    header h1 { font-size: 48px; }
+    .site-meta h2 { font-size: 36px; }
+    nav ul { gap: 12px; }
+    .container { padding: 0 20px; }
+    header { padding: 40px 20px; }
+    nav { padding: 12px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AI Builder<br>Prompts</h1>
+  <p>Comprehensive prompts for Google Stitch, Framer AI, Webflow AI, Durable, Wix ADI, 10Web & more</p>
+  <div class="meta">
+    <span class="tag">7 Sites</span>
+    <span class="tag">Copy-Ready Prompts</span>
+    <span class="tag">Passive Income Portfolio</span>
+    <span class="tag">UK-Focused</span>
+    <span class="tag">Last Updated: March 2026</span>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#maleoptimal">01 MaleOptimal</a></li>
+    <li><a href="#liftlab">02 LiftLab</a></li>
+    <li><a href="#fueloptimal">03 Fuel Optimal</a></li>
+    <li><a href="#tradepick">04 TradePick</a></li>
+    <li><a href="#aibyrole">05 AI By Role</a></li>
+    <li><a href="#remotepivot">06 RemotePivot</a></li>
+    <li><a href="#glp1">07 GLP-1 UK</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <div class="tip-box" style="margin-top:40px">
+    <strong>How to use these prompts →</strong> Each site has a MASTER prompt (works for any AI builder) plus platform-specific tweaks for Google Stitch, Framer AI, and Webflow AI. Copy the master prompt first, then append the platform-specific section. The more detail you give, the better the output.
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 01: MALEOPTIMAL -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="maleoptimal">
+    <div class="site-header">
+      <div class="site-number">01 /</div>
+      <div class="site-meta">
+        <h2 style="color:#C0392B">MaleOptimal</h2>
+        <div class="tagline">Testosterone & Male Hormone Optimisation — UK</div>
+        <div class="accent-bar" style="background:#C0392B"></div>
+      </div>
+    </div>
+
+    <div class="section-label">Key Details</div>
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>maleoptimal.co.uk — authority site for men's hormone health</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>Men aged 35–55, UK, professional, health-conscious, curious about TRT/peptides</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>Amazon UK affiliate, private clinic referrals (Optimale, Leger), Medichecks testing kits, Oura/WHOOP wearables, Gumroad ebook</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Andrew Huberman meets your smartest mate. Evidence-based, UK English, no bro science</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#C0392B">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a professional authority website called "MaleOptimal" — a UK-focused testosterone and male hormone optimisation platform for men over 35.
+
+BRAND IDENTITY:
+- Name: MaleOptimal
+- Tagline: "Optimise Your Hormones. Own Your Decade."
+- Logo treatment: MALE in heavy weight / Optimal in lighter weight, same typeface
+- Colour palette: Primary black #0D0D0D, Accent Signal Red #C0392B, Text white #FFFFFF, Muted grey #888888, Surface dark #141414
+- Typography: Bold condensed sans-serif for headlines (Bebas Neue or similar impact face), clean sans-serif for body copy (DM Sans or Inter), monospace for data/stats (JetBrains Mono or similar)
+- Aesthetic: Dark mode, data-driven, clinical but accessible. Think performance analytics dashboard meets men's health editorial. NOT gym bro. NOT medical textbook.
+
+TARGET AUDIENCE:
+Men aged 35–55, UK-based. Professional, intelligent, health-motivated. They've noticed their energy, focus, or libido declining. They want real answers — bloodwork, protocols, TRT options, supplement stacks — not vague wellness advice. They're willing to invest in their health.
+
+SITE STRUCTURE (build all these pages):
+1. Homepage — hero with bold headline, email capture, top 5 article teasers, affiliate product section
+2. Articles/Blog — filterable by pillar (Foundations, Supplementation, TRT, Peptides, Lifestyle)
+3. Bloodwork Guide page — cornerstone content, "What to Test & What It Means"
+4. TRT in the UK page — cornerstone, NHS vs Private, clinic comparison
+5. Supplement Stack page — product comparison table with affiliate links
+6. About page — credibility-focused, personal story angle
+7. Contact/Disclaimer page
+
+HOMEPAGE SECTIONS (in order):
+1. Hero: Full-width dark panel. Headline: "Your Testosterone Is Declining. Here's What To Do About It." Subheadline: "Evidence-based protocols for men over 35. No bro science. No fluff." CTA button: "Get The Free Bloodwork Guide" (email capture). Background: dark with subtle grain or data texture.
+2. Trust bar: "Evidence-based" | "UK-Focused" | "No Supplement Sponsorships" | "Written By Men Who've Done It"
+3. The 5 Pillars section: Foundations | Supplementation | TRT & Clinics | Peptides | Lifestyle Protocols — each with icon and brief description, linking to filtered article page
+4. Featured Articles grid: 3 cards — "SHBG Explained", "TRT in the UK: The Complete Guide", "The Morning Protocol for Testosterone"
+5. Recommended Stack section: 3–4 product cards (Magnesium Glycinate, Zinc, Vitamin D3/K2, Ashwagandha KSM-66) with "Buy on Amazon UK" affiliate CTA buttons. Small text: "We earn a small commission at no extra cost to you."
+6. Private Clinic section: Compare Optimale, Leger Clinic, Balance My Hormones — table format with price range, services, referral CTA
+7. Bloodwork Testing section: Medichecks and Monitor My Health comparison, with affiliate links
+8. Email capture section: "Get the UK Male Optimisation Bloodwork Checklist — Free PDF". Dark background, red CTA button, email input field.
+9. Footer: Logo, navigation links, affiliate disclaimer, copyright.
+
+ARTICLE CARD DESIGN:
+- Dark background card (#141414)
+- Red left border accent (4px)
+- Category pill in top left (e.g. "TRT" "Peptides" "Foundations")
+- Title in bold condensed font
+- Short excerpt (2 lines max)
+- Read time + date in muted text
+- Hover: subtle red glow or lift
+
+AFFILIATE PRODUCT CARD DESIGN:
+- Product image placeholder (or product photo)
+- Product name + brief benefit (1 line)
+- Star rating (4–5 stars)
+- "View on Amazon UK" button in red
+- Small "affiliate link" disclaimer text
+
+NAVIGATION:
+- Logo left
+- Nav right: Articles | Bloodwork Guide | TRT UK | Supplement Stack | About
+- Sticky nav with dark background on scroll
+- Mobile: hamburger menu
+
+CONTENT TONE GUIDELINES:
+- UK English throughout (optimise not optimize, programme not program)
+- Write like a credible, informed bloke in his 40s who has actually done bloodwork, tried TRT, and researched peptides
+- Evidence-first: cite mechanisms (e.g. "cortisol competes with testosterone at receptor level")
+- No hype, no superlatives, no "BEST EVER" claims
+- Practical and actionable — always end with what the reader should do next
+
+EMAIL CAPTURE / LEAD MAGNET:
+- Lead magnet: "The UK Male Optimisation Bloodwork Checklist"
+- Position: Hero CTA + dedicated section near bottom of homepage
+- Form: first name + email, minimal friction
+- Thank you message: "Check your inbox — your checklist is on its way."
+
+SEO METADATA:
+- Homepage title: "MaleOptimal | Testosterone & Hormone Optimisation for Men Over 35"
+- Meta description: "Evidence-based testosterone and hormone optimisation for UK men. Bloodwork guides, TRT advice, supplement stacks and lifestyle protocols. No bro science."
+- OG image: Dark hero with MaleOptimal logo
+
+LEGAL / TRUST ELEMENTS:
+- Affiliate disclaimer in footer: "MaleOptimal participates in affiliate programmes. We may earn a commission on qualifying purchases at no extra cost to you."
+- Medical disclaimer: "Content is for informational purposes only and does not constitute medical advice. Consult your GP or a qualified clinician."
+- Privacy policy page link in footer
+
+MONETISATION ELEMENTS TO INCLUDE:
+- Affiliate product cards on homepage and article sidebar
+- Private clinic comparison table with referral CTAs
+- Bloodwork testing kit comparison with affiliate links
+- Wearable device section (Oura Ring, WHOOP, Garmin Fenix) with affiliate CTAs
+- Ebook / Protocol Guide CTA ("The Complete Male Optimisation Protocol — £17")
+- Email list capture (all future product promotions via email)
+      </pre>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#888">GOOGLE STITCH ADDENDUM</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+[Append to Master Prompt for Google Stitch]
+
+STITCH-SPECIFIC INSTRUCTIONS:
+- Generate a multi-page site (not single page)
+- Use Material Design 3 tokens but override with the dark palette above
+- Ensure all interactive components (nav, email form, accordion for FAQs) are fully functional
+- Export clean HTML/CSS that can be deployed to any host
+- Generate a sitemap.xml automatically
+- Prioritise Core Web Vitals: lazy load images, minimal JS, fast first paint
+- Include schema.org markup for Article pages (use NewsArticle schema)
+- Generate placeholder content that matches the tone above exactly — do not use generic lorem ipsum
+      </pre>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#888">FRAMER AI ADDENDUM</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+[Append to Master Prompt for Framer AI]
+
+FRAMER-SPECIFIC INSTRUCTIONS:
+- Use Framer's CMS for Articles — create a collection with fields: title, excerpt, pillar (enum), read_time, published_date, featured_image, body
+- Add scroll-triggered entrance animations: fade up on article cards, stagger delay 0.1s each
+- Hero section: use Framer's parallax scroll on the background element
+- Product cards: add hover microinteraction (scale 1.02, shadow deepens)
+- Navigation: use Framer's built-in sticky nav component, customise with dark bg
+- Include a "Pillar Filter" component on the Articles page that filters by category without page reload
+- Export optimised for Framer hosting (CDN-distributed)
+- Generate mobile breakpoints at 390px and 768px
+      </pre>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#888">WEBFLOW AI ADDENDUM</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+[Append to Master Prompt for Webflow AI]
+
+WEBFLOW-SPECIFIC INSTRUCTIONS:
+- Create a Webflow CMS Collection for Articles with custom fields matching the content structure
+- Use Webflow's built-in Finsweet CMS Filter for the pillar filter on Articles page
+- Set up Webflow Forms for the email capture, connecting to Mailchimp or ConvertKit via Webflow's native integrations
+- Use Webflow Ecommerce (if applicable) for the ebook/digital product
+- Ensure all components are built in the Webflow style guide for easy reuse
+- Apply SEO fields at collection item level (custom title, meta, OG image)
+- Generate XML sitemap via Webflow settings
+- Use Webflow's built-in image optimisation (WebP conversion, lazy loading)
+      </pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 02: LIFTLAB -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="liftlab">
+    <div class="site-header">
+      <div class="site-number">02 /</div>
+      <div class="site-meta">
+        <h2 style="color:#6C3483">LiftLab</h2>
+        <div class="tagline">Science-Backed Training for Men Who Want Results</div>
+        <div class="accent-bar" style="background:#6C3483"></div>
+      </div>
+    </div>
+
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>liftlab.co.uk — training science authority site</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>Men 18–40, aesthetic physique goals, serious about training, follow Jeff Nippard/Mike Thurston type content</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>Amazon UK affiliate (equipment, supplements), MyProtein, Bulk, gym gear brands, training programme sales</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Evidence-based, technical but readable. Respects the science. Not motivational fluff.</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#6C3483">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a professional training science website called "LiftLab" — a UK-focused hypertrophy and strength training platform for men aged 18–40 who take training seriously.
+
+BRAND IDENTITY:
+- Name: LiftLab
+- Tagline: "Train Smarter. Build Better."
+- Colour palette: Primary black #0D0D0D, Accent deep purple #6C3483, Secondary electric #9B59B6, Text white #FFFFFF, Surface #141414
+- Typography: Heavy condensed sans-serif for headlines (Bebas Neue or Impact-style), clean modern sans for body (DM Sans), monospace for metrics
+- Aesthetic: Dark athletic, performance lab, data-driven. Think: elite sports science meets quality lifestyle brand. NO neon gym bro. NO protein powder bro marketing.
+
+TARGET AUDIENCE:
+Men aged 18–40, UK-based. They train 4–5x per week. They follow creators like Jeff Nippard, Mike Thurston, Sam Sulek. They want evidence-based hypertrophy advice — progressive overload, volume landmarks, RIR, periodisation. They're buying supplements, equipment, and would buy a training programme.
+
+SITE STRUCTURE:
+1. Homepage
+2. Training Guides (filterable: Hypertrophy, Strength, Cardio, Recovery, Nutrition)
+3. Exercise Library page (muscle group filter)
+4. Influencer Breakdowns page (Sam Sulek, Jeff Nippard, Mike Thurston programmes analysed)
+5. Gear & Supplements page (comparison tables + affiliate links)
+6. Training Programmes page (paid product CTAs)
+7. About page
+
+HOMEPAGE SECTIONS:
+1. Hero: Dark full-width with huge headline "BUILD THE PHYSIQUE. UNDERSTAND THE SCIENCE." Subheadline: "Evidence-based training guides for men who train with intent." CTA: "See Top Training Guides". Optional: animated barbell weight counter / rep counter HUD element.
+2. Trust bar: "Based on Peer-Reviewed Research" | "No Bro Science" | "UK-Based" | "Used by 10,000+ Lifters"
+3. Training Pillars grid: Hypertrophy | Strength | Cardio | Recovery | Nutrition — with icons and links
+4. Featured Guides: 3 article cards with purple accent, category tags, read time
+5. Exercise Spotlight: 3 exercises this week with muscle diagram placeholder, sets/reps recommendation, key cue
+6. Influencer Breakdown section: "We Analysed Sam Sulek's Programme — Here's What the Science Says" — card with image and CTA to full article
+7. Supplement Stack: Top 3 recommended supplements with Amazon UK affiliate links (Creatine, Protein, Caffeine)
+8. Gear section: Resistance bands, lifting belt, knee sleeves — Amazon UK affiliate cards
+9. Training Programme CTA: "Download the 12-Week Hypertrophy Programme — £27" — full-width dark CTA section
+10. Email capture: "Get the Free Hypertrophy Cheat Sheet — progressive overload tracker + volume landmarks PDF"
+11. Footer
+
+ARTICLE CARD DESIGN:
+- Dark card with purple left border
+- Category pill (Hypertrophy / Strength / Recovery / Nutrition)
+- Bold condensed title
+- 2-line excerpt
+- Read time + author
+- Hover: purple glow
+
+NAVIGATION:
+- Logo left (LiftLab — L bold, iftLab lighter)
+- Nav: Guides | Exercise Library | Influencers | Gear | Programmes
+- Sticky dark nav
+
+AFFILIATE MONETISATION:
+- Inline product cards within articles (Amazon UK links)
+- Dedicated Gear page with comparison tables
+- Supplement stack section on homepage
+- Training programme sales (Gumroad or direct)
+- UK gym membership comparison (PureGym vs The Gym Group vs Anytime Fitness)
+
+TONE: Evidence-based but readable. Reference mechanisms (e.g. "mTOR activation", "mechanical tension as primary hypertrophy driver") but explain them clearly. Cite Jeff Nippard, Mike Israetel, Andrew Huberman. UK English throughout.
+
+EMAIL CAPTURE LEAD MAGNET:
+"The Hypertrophy Cheat Sheet: Volume Landmarks, Progressive Overload Calculator & Weekly Training Template"
+
+SEO:
+- Title: "LiftLab | Science-Based Training Guides for Men"
+- Meta: "Evidence-based hypertrophy and strength training guides for UK men. Programme analysis, exercise science, supplement reviews. Build the physique you want."
+      </pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 03: FUEL OPTIMAL -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="fueloptimal">
+    <div class="site-header">
+      <div class="site-number">03 /</div>
+      <div class="site-meta">
+        <h2 style="color:#E67E22">Fuel Optimal</h2>
+        <div class="tagline">Nutrition Science for Men Over 40</div>
+        <div class="accent-bar" style="background:#E67E22"></div>
+      </div>
+    </div>
+
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>fueloptimal.co.uk — nutrition authority for men 40+</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>Men 35–55, want to lose fat/build muscle, optimise energy and hormone function through food</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>Amazon UK (supplements, kitchen equipment), MyProtein, Bulk, Mindful Chef meal kits, Gousto</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Like a nutritionist who's also your mate. Practical, no fads, evidence-grounded, plain English</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#E67E22">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a nutrition authority website called "Fuel Optimal" — UK-focused, targeting men over 35 who want to optimise their diet for body composition, energy, and hormonal health.
+
+BRAND IDENTITY:
+- Name: Fuel Optimal
+- Tagline: "Eat With Purpose. Perform at Your Peak."
+- Colour palette: Deep dark #0A0A0A background, Burnt orange #E67E22 accent, Golden #F39C12 secondary, White text, Muted grey #888
+- Typography: Bebas Neue for headlines, DM Sans for body, JetBrains Mono for nutritional data
+- Aesthetic: Performance nutrition meets intelligent editorial. Dark with warm orange — energy, fire, fuel. Think: serious men's nutrition, not diet culture.
+
+TARGET AUDIENCE:
+Men aged 35–55, UK. They want to lose the belly fat they've accumulated in their 40s, maintain muscle, optimise energy throughout the day. They've tried diets before. They want the truth about keto, fasting, protein targets, testosterone-supporting foods. Busy, professional, willing to invest in quality food and supplements.
+
+SITE STRUCTURE:
+1. Homepage
+2. Nutrition Guides (filterable: Macros, Testosterone Foods, Meal Planning, Fasting, Supplements)
+3. Meal Plans page (free + paid downloadable plans)
+4. Supplement Reviews page (comparison tables + Amazon UK affiliate links)
+5. Meal Kit Comparison page (Mindful Chef vs Gousto vs HelloFresh — affiliate)
+6. Recipe section (SEO-driven: "high protein meals for men over 40")
+7. About page
+
+HOMEPAGE SECTIONS:
+1. Hero: Dark panel. Headline: "STOP GUESSING. START FUELLING." Subheadline: "Evidence-based nutrition for men over 40 who want real results — not another diet plan." CTA: "Get the Free 7-Day Meal Plan". Animated macro counter (protein/carbs/fat targets ticking up) as a HUD element.
+2. Trust bar: "Evidence-Based" | "UK-Focused" | "No Fad Diets" | "Built for Men Over 35"
+3. Nutrition Pillars: Protein & Macros | Testosterone Foods | Meal Planning | Fasting Protocols | Smart Supplementation
+4. "Why Most Men Over 40 Eat Wrong" — 3 pain-point cards (eating too little protein / cutting carbs wrong / ignoring micronutrients for hormones)
+5. Top Guides grid: 3–4 article cards with orange border accents
+6. Supplement Stack: Top supplements for men over 40 with Amazon UK affiliate cards (Creatine, Magnesium, Omega-3, Vitamin D3)
+7. Meal Kit Comparison: Side-by-side table — Mindful Chef | Gousto | HelloFresh | Muscle Food — with affiliate CTAs
+8. Recipe spotlight: 2–3 recipe cards (high protein, easy, for busy men)
+9. 7-Day Meal Plan CTA: Email capture — "Get the Free 7-Day Testosterone-Supporting Meal Plan"
+10. Footer with affiliate disclaimer
+
+MONETISATION ELEMENTS:
+- Amazon UK affiliate cards (supplements, kitchen equipment)
+- Meal kit comparison with affiliate links (Mindful Chef pays well)
+- Supplement review pages with affiliate tables
+- Paid meal plan downloads (Gumroad — £7–£17)
+- MyProtein / Bulk affiliate links for protein powder
+
+TONE: Like a nutritionist friend over a pint. No diet culture. No calorie obsession. Focus on eating for performance, body composition, and hormonal health specifically for men over 35. UK English.
+
+EMAIL CAPTURE LEAD MAGNET:
+"The Free 7-Day Testosterone-Supporting Meal Plan for Men Over 40 — High protein, easy prep, UK ingredients"
+
+SEO:
+- Title: "Fuel Optimal | Nutrition for Men Over 40"
+- Meta: "Evidence-based nutrition guides for UK men over 40. Meal plans, supplement reviews, testosterone-supporting foods. No fads. Real results."
+      </pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 04: TRADEPICK -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="tradepick">
+    <div class="site-header">
+      <div class="site-number">04 /</div>
+      <div class="site-meta">
+        <h2 style="color:#2563EB">TradePick</h2>
+        <div class="tagline">Vertical SaaS Reviews for UK Trade & Service Businesses</div>
+        <div class="accent-bar" style="background:#2563EB"></div>
+      </div>
+    </div>
+
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>tradepick.co.uk — SaaS review authority for trade/service niches</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>UK small business owners: tattoo studios, dog groomers, PTs, mortgage brokers, letting agents, IFAs</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>SaaS affiliate referrals 20–50% recurring monthly. High-value B2B commissions.</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Straight-talking, saves them time. Like a trusted colleague who's already done the research.</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#2563EB">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a professional SaaS review website called "TradePick" — UK-focused, reviewing software built for specific trade and service industries. The site helps small UK business owners find the right software for their niche without wading through generic review sites.
+
+BRAND IDENTITY:
+- Name: TradePick
+- Tagline: "The Right Software for Your Trade."
+- Colour palette: Dark #0D0D0D background, Electric blue #2563EB accent, White text, Light surface #141414, Muted grey #666
+- Typography: DM Sans throughout (clean, professional, B2B feel), Bebas Neue for hero headline only
+- Aesthetic: Clean, trustworthy, professional. Think: Which? magazine meets SaaS review site. Dark mode but approachable. NOT startup-flashy. NOT generic.
+
+TARGET AUDIENCE:
+UK small business owners in trade and service sectors: tattoo studio owners, dog groomers, personal trainers, mortgage brokers, letting agents, IFAs, roofing firms, electricians, physiotherapists. They're not tech-savvy. They need software that just works for their industry. They're comparing 3–4 tools and want someone to cut through it.
+
+SITE STRUCTURE:
+1. Homepage — industry selector, featured comparisons, trust signals
+2. Industry hub pages (e.g. /tattoo-studio-software, /dog-grooming-software, /mortgage-broker-crm)
+3. Software comparison pages (e.g. "Best CRM for Mortgage Brokers UK 2026")
+4. Individual software review pages
+5. "How to Choose" guide pages per industry
+6. Blog for long-tail SEO
+7. About / Methodology page
+
+HOMEPAGE SECTIONS:
+1. Hero: Bold headline "Stop Wasting Time on the Wrong Software. We've Done the Research." Subheadline: "Honest, independent reviews of business software built specifically for UK trade and service businesses." Search bar: "What's your industry?" with dropdown. CTA: "Find Your Software" button in blue.
+2. Industry Grid: 8–12 industry tiles with icons — Tattoo Studios | Dog Groomers | Personal Trainers | Mortgage Brokers | Letting Agents | IFAs | Physiotherapists | Roofing Firms | Hairdressers | Electricians
+3. "How We Review" trust section: 3-column — "We Test It Ourselves" | "No Pay-to-Play Rankings" | "UK-Specific Advice"
+4. Featured Comparisons: 3 cards — e.g. "Best Tattoo Studio Software 2026", "Top CRMs for Mortgage Brokers", "Dog Grooming Booking Software Compared"
+5. Recent Reviews grid: 4 cards with software logo, star rating, category, one-line summary
+6. Newsletter CTA: "Get monthly updates on the best new software for your trade — no spam"
+7. Footer with methodology disclaimer and affiliate disclosure
+
+SOFTWARE COMPARISON TABLE FORMAT (for comparison pages):
+- Table header: Software name | Price/month | Free trial | Key feature | Rating
+- Rows: Each competitor with coloured "Best for..." pill
+- Featured pick highlighted in blue border
+- CTA button per row: "Try [Software] Free" (affiliate link)
+- Below table: detailed prose comparison
+
+INDIVIDUAL REVIEW PAGE FORMAT:
+- Score out of 10 in large type
+- Pros/cons bullet list (max 5 each)
+- Pricing breakdown
+- Who it's best for
+- Who should avoid it
+- "Try [Software]" affiliate CTA button (prominent)
+- Bottom: alternative software cards
+
+AFFILIATE DISCLOSURE (prominent, not buried):
+"TradePick earns a commission when you sign up to software via our links. This never affects our rankings — we test every tool independently."
+
+TONE: Plain-talking, saves time, zero waffle. Like a trusted colleague who's already trialled the software so you don't have to. UK English. Reference UK pricing (£ not $). Mention GDPR compliance, UK data storage where relevant.
+
+SEO STRATEGY:
+Target keywords: "best [software type] for [industry] UK", "tattoo studio software UK", "mortgage broker CRM UK comparison"
+- Generate an H1 for every page that exactly matches a target keyword
+- Internal linking: every industry page links to 3+ related reviews
+
+EMAIL CAPTURE:
+"Monthly SaaS Digest for UK Trade Businesses — new tools, honest reviews, no spam."
+      </pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 05: AI BY ROLE -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="aibyrole">
+    <div class="site-header">
+      <div class="site-number">05 /</div>
+      <div class="site-meta">
+        <h2 style="color:#00C896">AI By Role</h2>
+        <div class="tagline">AI Tools Reviewed by Job Function — Not by Hype</div>
+        <div class="accent-bar" style="background:#00C896"></div>
+      </div>
+    </div>
+
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>aibyrole.co.uk — AI tools reviewed for specific job roles, not generic "best AI 2026" lists</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>UK professionals: ops managers, HR teams, solicitors, accountants, recruiters, estate agents, NHS admin</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>SaaS affiliate referrals (20–50% recurring), AI tool partnerships, sponsored reviews</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Practical, intelligent, respects the reader's time. No AI hype. No "ChatGPT will replace you" fear.</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#00C896">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a professional AI tools review website called "AI By Role" — UK-focused, reviewing and recommending AI tools organised by job function rather than general capability.
+
+BRAND IDENTITY:
+- Name: AI By Role
+- Tagline: "The Right AI Tools for Your Job. Not for Everyone Else's."
+- Colour palette: Near-black #0A0A12 background, Teal/mint #00C896 accent, Purple #7B2FBE secondary, White text, Surface #13131F
+- Typography: JetBrains Mono for data and tech elements, DM Sans for body, Bebas Neue for hero
+- Aesthetic: Technical intelligence meets approachability. Dark, teal-accented. Feels like a professional tool directory, not a hype blog. Think: Product Hunt meets Which?
+
+TARGET AUDIENCE:
+UK professionals who want to use AI in their specific job role but are overwhelmed by generic "best AI tools" content. Includes: Operations Managers, HR Directors, Solicitors, Accountants, Recruiters, Estate Agents, Social Media Managers, Financial Advisers, NHS Admin, Supply Chain Managers, Freelancers. They're not technical. They want to know: "Which AI tools will actually help me do my specific job better?"
+
+SITE STRUCTURE:
+1. Homepage — job role selector, featured role guides, latest reviews
+2. Role hub pages (e.g. /ai-tools-for-operations-managers, /ai-tools-for-hr-teams, /ai-tools-for-solicitors)
+3. Tool comparison pages (e.g. "Best AI Writing Tools for Solicitors UK")
+4. Individual tool review pages
+5. AI Basics section (for non-technical readers)
+6. Blog for long-tail SEO
+7. About / Methodology page
+
+HOMEPAGE SECTIONS:
+1. Hero: Dark panel. Headline: "FORGET 'BEST AI TOOLS 2026'. FIND THE BEST AI TOOLS FOR YOUR JOB." Subheadline: "Honest, practical AI tool guides organised by job role. Built for UK professionals." Search/selector: "I work in..." dropdown with 20+ job roles. CTA: "Show My Tools" in teal.
+2. Role Grid: Job role tiles with icons — Operations Manager | HR & People | Solicitor / Legal | Accountant | Recruiter | Estate Agent | Social Media | Customer Service | Copywriter | Financial Adviser | Supply Chain | NHS Admin | Freelancer — each tile links to role hub page
+3. Why This Is Different: "Not another 'ChatGPT vs Gemini' article. Real tools for real jobs, reviewed by people who work in those roles."
+4. Featured Role Guides: 3 cards — e.g. "AI Tools for Operations Managers", "Best AI Tools for Solicitors UK 2026", "AI Tools for HR Teams"
+5. Tool of the Week: Single featured tool with score, role tags, brief summary, affiliate CTA
+6. Stats/trust: "27 job roles covered | 140+ tools reviewed | UK-focused"
+7. Email capture: "Get monthly AI Tool updates for your specific role — no generic AI news"
+8. Footer
+
+ROLE HUB PAGE FORMAT:
+- H1: "Best AI Tools for [Role] UK 2026"
+- Intro: What [role] actually needs AI for (specific use cases)
+- Top 5 tools list with mini-reviews (2–3 paras each) and affiliate CTAs
+- Comparison table
+- "Tools to avoid" section (builds trust)
+- FAQ (schema-marked)
+- Related role links
+
+TOOL REVIEW FORMAT:
+- Score (Overall / Ease of Use / Value / Role Fit) out of 10
+- Who it's best for (specific roles)
+- Pros / Cons (5 each max)
+- Pricing (UK pricing in £)
+- "Try [Tool] Free" CTA (affiliate)
+- Video embed placeholder
+
+AFFILIATE MONETISATION:
+- Recurring SaaS commissions: Notion, Jasper, Copy.ai, Grammarly, Fireflies, Otter.ai, Descript, Monday.com, Asana, HubSpot, Salesforce AI, Harvey (legal AI), Clio, Xero AI, QuickBooks AI
+- Target tools with 20–50% recurring affiliate commission
+
+TONE: Intelligent, practical, cuts through AI hype. Treats the reader as a competent professional who wants to know if a tool will save them time, not philosophy about AI changing the world. UK English. Reference UK-specific contexts (GDPR, NHS, UK legal frameworks).
+
+SEO FOCUS:
+Target: "best AI tools for [role] UK", "AI for [industry] UK", "[tool name] review UK"
+Ultra-low competition: "AI tools for NHS admin", "AI tools for IFAs UK", "AI for mortgage brokers"
+
+EMAIL CAPTURE LEAD MAGNET:
+"The AI Tools Starter Kit for [Your Role] — Top 5 tools, setup guide, prompt library. Free PDF."
+      </pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 06: REMOTEPIVOT -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="remotepivot">
+    <div class="site-header">
+      <div class="site-number">06 /</div>
+      <div class="site-meta">
+        <h2 style="color:#F59E0B">RemotePivot</h2>
+        <div class="tagline">Pivot to Remote Work — For Non-Tech Workers</div>
+        <div class="accent-bar" style="background:#F59E0B"></div>
+      </div>
+    </div>
+
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>remotepivot.co.uk — honest guides for people in traditional industries pivoting to remote work</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>Nurses, teachers, retail workers, admin, call centre staff who want to pivot to remote-first careers</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>FlexJobs, Udemy, Coursera, LinkedIn Learning affiliate, productivity tool affiliate, CV services</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Story-led, warm, honest. No scam energy. Like a friend who's already made the jump and is helping you do the same.</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#F59E0B">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a career and remote work training website called "RemotePivot" — UK-focused, helping people in traditional, in-person industries (nursing, teaching, retail, admin) pivot into remote-first careers.
+
+BRAND IDENTITY:
+- Name: RemotePivot
+- Tagline: "Your Industry Changed. Your Career Doesn't Have To."
+- Colour palette: Dark #0D0D0D background, Amber #F59E0B accent, Warm teal #0D9488 secondary, White text, Surface #161616
+- Typography: DM Sans throughout (warm, approachable), Bebas Neue for impact headlines only
+- Aesthetic: Warm, encouraging, community-feel. Dark but approachable — not cold tech. Think: honest career blog meets professional training platform. NO get-rich-quick energy. NO scammy "work from anywhere" stock photos.
+
+TARGET AUDIENCE:
+UK workers in traditional industries who want or need to move to remote work. Includes: NHS nurses, teachers, retail workers, call centre staff, admin workers, civil servants. They're not technical. They're worried about making the jump. They've probably seen "work from home" scams before and are sceptical. They need honest, practical guidance and skills to make the transition.
+
+SITE STRUCTURE:
+1. Homepage
+2. Career Pivot Guides by industry (/nursing-to-remote, /teaching-to-remote, /retail-to-remote, /admin-remote-jobs)
+3. Skills & Courses page (filterable recommendations with affiliate links)
+4. Remote Job Boards comparison page (FlexJobs vs Indeed Remote vs LinkedIn Jobs)
+5. Tools & Setup page (laptop recommendations, broadband, home office — Amazon UK affiliate)
+6. Success Stories section (story-led, inspiration)
+7. CV & Interview guides
+8. Blog for long-tail SEO
+
+HOMEPAGE SECTIONS:
+1. Hero: Warm, honest. Headline: "You Don't Need to Be a Tech Worker to Work Remotely." Subheadline: "Practical guides for nurses, teachers, retail and admin workers who want to pivot into remote careers — without the BS." CTA: "Find Your Pivot Path" — links to career selector. Amber CTA button.
+2. "Who Is This For?" section: 6 character cards — Nurse | Teacher | Retail Worker | Call Centre | Admin | Civil Servant — each links to their pivot guide. Brief honest description under each.
+3. "The Honest Truth" section: 3 cards debunking myths — "You don't need to code" | "Remote jobs exist in your field" | "The transition takes 3–6 months, not 3 days" — builds trust vs scammy competitors.
+4. Pivot Guides: 3 featured guides with amber border cards
+5. Courses & Training: Top recommended courses with Udemy/Coursera affiliate cards, "Verified by our team" badge
+6. Remote Job Boards comparison: mini table — FlexJobs | LinkedIn | Indeed Remote | Remote.co — with honest pros/cons and affiliate CTA
+7. Success Story spotlight: Quote card — "I was a retail manager for 12 years. 8 months later I'm a remote customer success manager." — authentic, story-led
+8. Free Guide CTA: "Download the Free 5-Step Remote Pivot Roadmap" — email capture
+9. Footer
+
+PIVOT GUIDE PAGE FORMAT (e.g. /nursing-to-remote):
+- H1: "How to Pivot from Nursing to Remote Work in the UK"
+- Intro: Honest assessment of transferable skills from nursing
+- Remote career paths that suit nurses (health tech, medical coding, telemedicine, health writing)
+- Skills gaps and how to fill them (with course affiliate links)
+- Timeline: realistic 3–9 month roadmap
+- Remote job boards to use for this transition
+- CV tips specific to this background
+- FAQ with schema markup
+
+AFFILIATE MONETISATION:
+- Udemy course affiliate links (10–15% per sale)
+- Coursera affiliate
+- LinkedIn Learning affiliate
+- FlexJobs affiliate subscription ($2.95/month → $14.95/month)
+- Amazon UK home office setup affiliate (laptop, monitor, desk, chair, headset)
+- Productivity tools: Notion, Slack, Zoom, Asana affiliate
+
+TONE: Story-led, warm, zero scam energy. Treats readers as smart adults who've been burned before by "make £5k from home" content. Be the trusted friend who's already made the jump. UK English. Reference UK-specific realities (NHS, Universal Credit, IR35 if relevant).
+
+EMAIL CAPTURE LEAD MAGNET:
+"The 5-Step Remote Pivot Roadmap — from traditional industry to your first remote role. Free PDF guide."
+
+SEO FOCUS:
+"How to get a remote job as a [profession] UK", "remote work for nurses UK", "work from home jobs for teachers UK", "retail to remote career change UK"
+      </pre>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SITE 07: GLP-1 UK -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="site-section" id="glp1">
+    <div class="site-header">
+      <div class="site-number">07 /</div>
+      <div class="site-meta">
+        <h2 style="color:#00C896">GLP-1 UK</h2>
+        <div class="tagline">The Complete UK Guide to GLP-1 Weight Loss Medications</div>
+        <div class="accent-bar" style="background:#00C896"></div>
+      </div>
+    </div>
+
+    <div class="builders-grid">
+      <div class="builder-card"><h4>Domain Intent</h4><p>glp1uk.co.uk — authority resource for Ozempic/Wegovy/Mounjaro users in the UK</p></div>
+      <div class="builder-card"><h4>Primary Audience</h4><p>UK adults on or considering GLP-1 medications, NHS or private, aged 30–60</p></div>
+      <div class="builder-card"><h4>Revenue Model</h4><p>Private clinic referrals (£50–£150/referral), supplement affiliate, testing kit affiliate, Medichecks</p></div>
+      <div class="builder-card"><h4>Tone</h4><p>Clinical but warm. Evidence-based, non-judgemental. Like a brilliant GP who has time for you.</p></div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#00C896">MASTER PROMPT — All Platforms</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+Build a medical information and resource website called "GLP-1 UK" (or similar UK-relevant brand name) — a comprehensive, evidence-based guide to GLP-1 weight loss medications (Ozempic, Wegovy, Mounjaro, Saxenda) for a UK audience.
+
+BRAND IDENTITY:
+- Name: GLP-1 UK (or: SlimScience UK / WeightWise UK — clean, clinical, trustworthy)
+- Tagline: "The UK's Most Complete Guide to GLP-1 Medications."
+- Colour palette: Deep dark #0A1628 background (deep navy), Primary green #1A7A4A, Accent teal #00C896, White text, Surface #0F1F2E, Warning amber #F59E0B for side effect sections
+- Typography: Clean professional sans (DM Sans) for body, JetBrains Mono for clinical data/dosing tables, bold condensed for section headers
+- Aesthetic: Clinical trust meets warm accessibility. Dark navy with green/teal — medical but not cold. Think: NHS design language meets modern health startup. Absolutely no weight loss before/after imagery or shaming language.
+
+TARGET AUDIENCE:
+UK adults considering or currently using GLP-1 medications. They may be on NHS Wegovy or private Mounjaro. They have questions their GP doesn't have time to answer. They want to know: how to manage side effects, what to eat, what supplements to take, how to inject, what the cost is, what to do if it stops working. Non-judgemental audience — weight loss is medical, not moral.
+
+SITE STRUCTURE:
+1. Homepage
+2. Medication guides: /ozempic-uk, /wegovy-uk, /mounjaro-uk, /saxenda-uk
+3. Side effects management hub: /glp1-side-effects
+4. Nutrition on GLP-1: /eating-on-glp1, /protein-on-glp1
+5. UK Private Clinics comparison page: /private-glp1-clinics-uk
+6. NHS Eligibility guide: /nhs-glp1-eligibility
+7. Monitoring & Bloodwork page
+8. Supplements on GLP-1 page
+9. FAQ hub
+10. Blog/articles for long-tail SEO
+
+HOMEPAGE SECTIONS:
+1. Hero: Dark navy panel. Headline: "Everything You Need to Know About GLP-1 in the UK." Subheadline: "Ozempic. Wegovy. Mounjaro. Evidence-based guides written for UK patients — not American websites." CTA: "Find Your Medication Guide" — green button linking to medication selector.
+2. Medication selector tiles: Ozempic | Wegovy | Mounjaro | Saxenda — each with brief description and "Read Guide" CTA
+3. "What GLP-1 UK Covers" — 6 topic cards: Side Effects | Nutrition | UK Clinics | NHS Eligibility | Supplements | Monitoring
+4. "Why Use This Site?" trust signals: "UK-Specific" | "Evidence-Based" | "No Clinic Sponsorship Bias" | "Written With Medical Review"
+5. Featured Articles: 3 cards — "Nausea on GLP-1: What Actually Helps", "Mounjaro vs Wegovy: The Complete UK Comparison", "What to Eat on GLP-1 to Preserve Muscle"
+6. UK Private Clinic Comparison: Table — SkinnyJab | Juniper | Numan | Oviva | Manual — with pricing, wait times, services, "Get Quote" CTA (affiliate referral)
+7. Medichecks blood testing CTA: "Monitor Your Progress — Recommended Bloodwork Panel" with affiliate link
+8. Supplement section: Top supplements for GLP-1 users (protein powder, magnesium, zinc, B12, collagen) with Amazon UK affiliate links
+9. Side effects resource: "The GLP-1 Side Effects Hub — What To Expect, What Helps, When To Call Your GP"
+10. Email capture: "Get the UK GLP-1 Patient Guide — Dosing schedules, side effect management, nutrition protocol. Free PDF."
+11. Footer: Medical disclaimer (CRITICAL), affiliate disclosure, contact
+
+CRITICAL MEDICAL DISCLAIMER:
+Must appear on every page, prominently: "GLP-1 UK provides information for educational purposes only. This is not medical advice. Always consult your GP, pharmacist, or prescribing clinician before making changes to your medication or treatment."
+
+PRIVATE CLINIC COMPARISON PAGE FORMAT:
+- Clear table: Clinic | Monthly cost | Medication available | Consultation type | Wait time | Rating
+- Each row has affiliate CTA: "Get a Quote from [Clinic]"
+- Honest methodology note: "We may earn a referral fee from some clinics listed. This does not affect our rankings."
+
+AFFILIATE MONETISATION (HIGH VALUE):
+- Private clinic referrals: £50–£150 per patient sign-up (SkinnyJab, Juniper, Numan Weight, Oviva, Manual)
+- Medichecks bloodwork testing panels (10–15% commission)
+- Amazon UK supplement affiliate (protein, vitamins, collagen)
+- Pharmacy comparison links
+
+TONE: Like the best GP appointment you've never had. Clinical, evidence-based, warm, non-judgemental. No weight shame. No before/after culture. Just practical information for people navigating a medical journey. UK English.
+
+SEO FOCUS:
+"Mounjaro vs Wegovy UK", "Ozempic UK private prescription cost", "GLP-1 side effects what to do", "can you get Wegovy on NHS UK", "best private GLP-1 clinic UK", "what to eat on Mounjaro"
+
+EMAIL CAPTURE LEAD MAGNET:
+"The UK GLP-1 Patient Guide — dosing protocol, side effect management, nutrition advice & bloodwork checklist. Free PDF."
+      </pre>
+    </div>
+  </section>
+
+  <!-- BONUS: Particle Design Section -->
+  <section class="site-section" id="design-notes">
+    <div class="site-header">
+      <div class="site-number">✦</div>
+      <div class="site-meta">
+        <h2 style="color:#fff">Design Notes</h2>
+        <div class="tagline">Grain Particle & 3D Swarm — Advanced Visual Direction</div>
+        <div class="accent-bar" style="background:#C0392B"></div>
+      </div>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#888">PARTICLE / SWARM ANIMATION PROMPT (add to any site)</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+ADVANCED VISUAL DIRECTION — PARTICLE / SWARM HERO ANIMATION:
+
+Add an animated particle swarm system to the hero section using one of these approaches:
+
+OPTION A — Canvas 2D Particle Web (works in any builder):
+- Vanilla JS canvas element behind hero text
+- 80–120 small dots (#ffffff or accent colour, 2px radius, 15–30% opacity)
+- Dots drift slowly with randomised velocity vectors
+- When two dots come within 120px, draw a thin connecting line between them
+- Creates organic, neural-network / molecular mesh visual
+- Performance: requestAnimationFrame, no external libraries
+
+OPTION B — Three.js 3D Particle Swarm:
+- Import Three.js (CDN: https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js)
+- 300–500 particles in a spherical distribution
+- Slow rotation of the entire swarm on Y axis
+- Particles pulse scale between 0.8–1.2 using sine wave
+- Camera perspective: slight upward tilt for depth
+- Colour: match site accent with alpha variations
+
+OPTION C — CSS Grain Overlay (lightest, no JS):
+- SVG feTurbulence filter as a fixed ::after pseudo-element on the hero
+- baseFrequency="0.65", numOctaves="3", type="fractalNoise"
+- Mix-blend-mode: overlay, opacity 0.08–0.12
+- Adds organic film texture to hero background
+- Zero performance cost
+
+BUILDER INSTRUCTIONS FOR PARTICLE PROMPT:
+"Add an animated particle background to the hero section. Use a canvas element with 80 white dots (2px, 20% opacity) that drift slowly and connect with thin lines when within 120px of each other. This should render behind the hero text and CTA buttons. Performance should be smooth at 60fps. No external libraries required."
+
+RECOMMENDED IMPLEMENTATION PER SITE:
+- MaleOptimal: Option C (grain) + Option A (particle web, red accent dots)
+- LiftLab: Option A (purple dots)
+- Fuel Optimal: Option A (orange dots, slower drift)
+- TradePick: Option C only (grain — professional B2B)
+- AI By Role: Option B (3D swarm, teal/cyan)
+- RemotePivot: Option C (grain — warm, approachable)
+- GLP-1 UK: Option A (teal dots, very slow — clinical calm)
+      </pre>
+    </div>
+
+    <div class="prompt-block">
+      <span class="builder-label" style="color:#888">GENERAL AI BUILDER TIPS</span>
+      <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+      <pre>
+UNIVERSAL TIPS FOR BEST RESULTS IN AI WEBSITE BUILDERS:
+
+1. GOOGLE STITCH:
+   - Paste the master prompt into the initial "Describe your website" field
+   - In the refinement step, paste the monetisation elements section separately
+   - Use "Add page" for each page in the site structure
+   - Specify "dark mode, no light mode" explicitly
+
+2. FRAMER AI:
+   - Start with "Generate a website" and paste the full master prompt
+   - After generation, use Framer's CMS to add the article/product collections
+   - Add Framer's built-in "Mailchimp" integration for email capture
+   - Typography overrides: Framer works well with Google Fonts — specify exact fonts
+
+3. WEBFLOW AI:
+   - Use in Designer, not the AI site builder (gives more control)
+   - Paste prompt into the AI chat panel section by section
+   - Build collections first, then pages
+   - Use Finsweet for CMS filtering
+
+4. DURABLE AI:
+   - Good for quick prototypes — use the 30-second builder first
+   - Then refine with the master prompt in edit mode
+
+5. WIX ADI / STUDIO:
+   - Use Studio (not ADI) for more control
+   - Paste prompt into the AI assistant after generating the base site
+
+6. 10WEB:
+   - Best for WordPress-based builds
+   - Good for SEO-heavy sites (Yoast integration)
+   - Paste master prompt, then use 10Web's SEO settings to apply metadata
+
+PROMPT ENGINEERING TIPS FOR AI BUILDERS:
+- Specify exact hex colours — never say "dark red", say "#C0392B"
+- Mention the font names explicitly — "Bebas Neue, Google Fonts CDN"
+- List sections in order — AI builders follow hierarchy
+- Say "do not use stock photography" to get cleaner placeholder layouts
+- Ask for "affiliate link placeholder buttons" so the structure is there to fill
+- Request "mobile-responsive at 390px breakpoint"
+- Always end with: "Generate a complete, browser-ready design"
+      </pre>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Passive Income Portfolio — AI Builder Prompts | 7 Sites | March 2026</p>
+  <p style="margin-top:8px">Generated for internal use — not for distribution</p>
+</footer>
+
+<script>
+function copyPrompt(btn) {
+  const pre = btn.parentElement.querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

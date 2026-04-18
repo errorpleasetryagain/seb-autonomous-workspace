@@ -1,0 +1,120 @@
+MONETISATION AUDIT — QUICK SUMMARY
+Good Living Co | 7-Site Passive Income Portfolio | 29 March 2026
+
+HONEST RATING: 3/10 ready to monetise
+- Sites are beautifully built (80% complete)
+- Revenue infrastructure is nearly absent (20% complete)
+- 61+ affiliate links are still placeholders
+- No affiliate programmes registered
+- 4 out of 7 sites not deployed to Vercel
+
+KEY FINDING:
+You will make ZERO pounds from these sites until you:
+1. Register affiliate programmes (Amazon, Medichecks, supplement retailers, etc.)
+2. Replace 61+ placeholder affiliate links with real affiliate codes
+3. Test email automation end-to-end
+4. Set up Google Analytics 4 with conversion tracking
+5. Deploy 4 undeployed sites to Vercel
+
+---
+
+SITE SCORES (monetisation readiness):
+
+MaleOptimal       2/10  (Live, 151 guides, all affiliate links placeholder)
+LiftLab           2/10  (Deploying, 74 guides, affiliate links placeholder)
+Fuel Optimal      2/10  (Deploying, 56 guides, affiliate links placeholder)
+TradePick         1/10  (Not deployed, 39 guides, no affiliate strategy)
+AIByRole          1/10  (Not deployed, 41 guides, no SaaS affiliate strategy)
+RemotePivot       1/10  (Not deployed, 38 guides, no job board strategy)
+GLP-1 UK          0/10  (Not deployed, 20 guides, high-value but unmonetised)
+
+---
+
+REVENUE POTENTIAL (conservative):
+- MaleOptimal:     £1,250–£3,000/month
+- LiftLab:         £400–£850/month
+- Fuel Optimal:    £450–£1,000/month
+- TradePick:       £450–£1,450/month
+- AIByRole:        £350–£950/month
+- RemotePivot:     £300–£850/month
+- GLP-1 UK:        £1,100–£5,300/month (highest-ticket, under-resourced)
+
+TOTAL: £4,300–£13,400/month (realistic by Sep 2026 if action items completed)
+
+---
+
+TOP 3 IMMEDIATE ACTIONS (do this week):
+
+1. Register Amazon Associates UK
+   - Impact: £400–£800/month quick win
+   - Effort: 2 hours
+   - Replace 8 placeholder links in MaleOptimal, 1 in LiftLab, 1 in Fuel Optimal
+
+2. Register Medichecks affiliate (MaleOptimal + Fuel Optimal)
+   - Impact: £150–£400/month
+   - Effort: 1 day
+   - Replace 5+1 placeholder links
+
+3. Register top 5 supplement retailers (MyProtein, Bulk, Reflex, Thorne, BetterYou)
+   - Impact: £400–£800/month
+   - Effort: 2-3 days
+   - Replace ~30 placeholder links across all 3 deployed sites
+
+---
+
+TOP 5 BLOCKING ISSUES:
+
+CRITICAL (Fix this month):
+1. 61+ affiliate link placeholders not replaced with real codes
+2. No affiliate programmes registered
+3. Google Analytics 4 not set up for conversion tracking
+4. Email automation not tested end-to-end
+5. 4 sites not deployed to Vercel (£300–£5,300/month blocked)
+
+---
+
+REGULATORY ALERT:
+GLP-1 UK is a PRESCRIPTION DRUG niche. Before deploying:
+- Consult UK solicitor re: affiliate links to prescription services (£200–£500)
+- Add required medical disclaimers
+- Verify affiliate partners are compliant with FCA/MHRA rules
+
+---
+
+TIMELINE TO REVENUE:
+- Month 1 (April):   Fix affiliate links, register programmes. Target: £500–£1,000/month
+- Month 2-3:         Expand content, optimize CTAs, grow email list. Target: £1,500–£3,000/month
+- Month 4-6:         Analytics optimization, email nurture, SEO growth. Target: £3,000–£6,000/month
+- Month 7-12:        Authority building, video/podcast amplification. Target: £4,000–£8,000/month
+
+---
+
+EFFORT REQUIRED:
+- Affiliate registration & link replacement: 2-3 weeks
+- Analytics setup & email testing: 3-5 days
+- Content optimization & listicle creation: 2-3 weeks
+- Deploy undeployed sites: 2-3 days
+- TOTAL: 4-6 weeks to 70% revenue potential
+
+---
+
+BIGGEST OPPORTUNITY MISSED:
+GLP-1 UK has only 20 guides but is highest-value niche (£1,000–£5,000 per referral).
+Should have 50+ guides with:
+- 10-15 individual clinic reviews
+- Clinic comparison table with affiliate links
+- Patient journey guides
+- Side effects deep-dives
+
+Expanding this site from 20 to 50 guides (3-4 weeks work) could unlock £1,000–£5,000/month.
+
+---
+
+BIGGEST QUICK WIN:
+Register Amazon Associates + Medichecks this week.
+Replace affiliate link placeholders.
+Result: £500–£1,000/month within 2-3 weeks.
+
+---
+
+Full detailed report: MONETISATION-AUDIT.md (39KB, 852 lines)

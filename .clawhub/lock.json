@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "skills": {
+    "git": {
+      "version": "1.0.8",
+      "installedAt": 1775240941360
+    },
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1775241049908
+    },
+    "browser-automation": {
+      "version": "1.0.1",
+      "installedAt": 1775241052412
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1775241054100
+    },
+    "obsidian": {
+      "version": "1.0.0",
+      "installedAt": 1775241055825
+    },
+    "affiliate-marketing-channels": {
+      "version": "1.0.0",
+      "installedAt": 1775283418360
+    },
+    "affiliate-page-generator": {
+      "version": "1.0.1",
+      "installedAt": 1775283426769
+    },
+    "content-recycler": {
+      "version": "1.0.0",
+      "installedAt": 1775283434442
+    },
+    "brand-voice-profile": {
+      "version": "1.0.0",
+      "installedAt": 1775283439254
+    },
+    "agent-task-manager": {
+      "version": "1.0.0",
+      "installedAt": 1775283449542
+    },
+    "things-mac": {
+      "version": "1.0.0",
+      "installedAt": 1775283881244
+    },
+    "session-logs": {
+      "version": "1.0.0",
+      "installedAt": 1775283889850
+    },
+    "openai-whisper": {
+      "version": "1.0.0",
+      "installedAt": 1775283899115
+    },
+    "affiliate-master": {
+      "version": "1.0.0",
+      "installedAt": 1775284212319
+    },
+    "xurl": {
+      "version": "1.0.0",
+      "installedAt": 1775284234640
+    },
+    "check-analytics": {
+      "version": "0.1.0",
+      "installedAt": 1775284239877
+    },
+    "n8n": {
+      "version": "2.0.0",
+      "installedAt": 1775284247359
+    },
+    "image-cog": {
+      "version": "1.0.6",
+      "installedAt": 1775284259805
+    },
+    "image-handler": {
+      "version": "1.0.0",
+      "installedAt": 1775284264731
+    },
+    "best-image-generation": {
+      "version": "1.0.2",
+      "installedAt": 1775284269215
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1775329858454
+    },
+    "self-improving-agent": {
+      "version": "3.0.13",
+      "installedAt": 1775329861189
+    },
+    "nano-banana-pro": {
+      "version": "1.0.1",
+      "installedAt": 1775329864972
+    },
+    "skill-vetter": {
+      "version": "1.0.0",
+      "installedAt": 1775329868506
+    },
+    "himalaya": {
+      "version": "1.0.0",
+      "installedAt": 1775329873238
+    },
+    "multi-search-engine": {
+      "version": "2.1.3",
+      "installedAt": 1776323173063
+    },
+    "ontology": {
+      "version": "1.0.4",
+      "installedAt": 1776323180496
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "installedAt": 1776323183072
+    }
+  }
+}

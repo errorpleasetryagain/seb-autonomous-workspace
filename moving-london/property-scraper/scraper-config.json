@@ -1,0 +1,61 @@
+{
+  "name": "london-property-alerts",
+  "description": "Weekly Rightmove + Zoopla scraper for Adam & Amy — Bow + Hackney only",
+  "schedule": {
+    "kind": "cron",
+    "expr": "0 9 * * 6",
+    "tz": "Europe/London"
+  },
+  "scraper": {
+    "platform": "apify",
+    "actor": "automation-lab/rightmove-scraper",
+    "alternatives": [
+      "tropical_quince/rightmove-property-scraper",
+      "femstar/uk-property-data-scraper-rightmove-zoopla"
+    ]
+  },
+  "searchCriteria": {
+    "locations": [
+      "Bow, London E3",
+      "Hackney Wick, London E9",
+      "Hackney Central, London E8",
+      "Homerton, London E9",
+      "London Fields, London E8"
+    ],
+    "priceMin": 2300,
+    "priceMax": 2500,
+    "bedroomsMin": 1,
+    "bedroomsMax": 2,
+    "propertyType": "flat",
+    "letType": "long-term",
+    "availableFrom": "now",
+    "furnishedState": "any"
+  },
+  "output": {
+    "format": "json",
+    "destination": "notion-mcp",
+    "database": "Property Tracker",
+    "fields": {
+      "title": "address",
+      "price": "price",
+      "bedrooms": "bedrooms",
+      "bathrooms": "bathrooms",
+      "location": "area",
+      "agent": "agentName",
+      "link": "url",
+      "images": "images",
+      "description": "summary",
+      "dateAdded": "addedOn",
+      "status": "availability"
+    }
+  },
+  "notifications": {
+    "enabled": true,
+    "summary": "weekly",
+    "channel": "webchat",
+    "includeNewOnly": true,
+    "threshold": {
+      "minNewListings": 1
+    }
+  }
+}

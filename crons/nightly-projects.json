@@ -1,0 +1,13 @@
+{
+  "name": "nightly-projects",
+  "schedule": {"kind": "cron", "expr": "0 23 * * *", "tz": "Europe/London"},
+  "sessionTarget": "isolated",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "AUTONOMOUS NIGHTLY WORKFLOW INITIATED.\n\nYour mission: Build productivity tools or cool projects for Adam overnight.\n\nWORKFLOW:\n1. READ memory/nightly-projects-workflow.md for full instructions\n2. READ USER.md and recurring-patterns.md to understand Adam's needs\n3. SPAWN sub-agents:\n   - Research Coordinator: Find/generate 5-10 ideas, score them\n   - Architecture Planner: Design top 3 ideas\n   - Builder: Implement MVP (use coding-agent if code needed)\n   - QA: Test and polish\n   - Content Curator: Gather morning headlines\n\n4. BUILD something functional by 06:00\n5. OVERCOME BLOCKERS: Try 3 approaches, spawn research agent, search web\n6. DOCUMENT in memory/YYYY-MM-DD.md what was built\n7. UPDATE ONTOLOGY with new entities (Projects, Tasks, Documents)\n\nHEADLINES TO GATHER (morning briefing):\n- World news (BBC/Reuters)\n- Financial markets ( Yahoo Finance)\n- F1 (latest news/results)\n- Sports (football, tennis)\n- Tech (TechCrunch/HN/The Verge)\n\nCOST THRESHOLD: 30 min max per blocker\nSUCCESS: Working MVP by 07:00\n\nDo NOT ask for confirmation. Just build.",
+    "model": "ollama/kimi-k2.5:cloud",
+    "thinking": "high",
+    "timeoutSeconds": 28800
+  },
+  "delivery": {"mode": "none"}
+}

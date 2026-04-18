@@ -1,0 +1,49 @@
+# Himalaya Configuration
+# IMAP for reading, SMTP for sending
+
+[accounts.gmail]
+default = true
+email = "your-email@gmail.com"
+display-name = "Adam Turton"
+
+# IMAP (reading emails)
+[accounts.gmail.imap]
+host = "imap.gmail.com"
+port = 993
+login = "your-email@gmail.com"
+# You'll need an App Password from Google (not your regular password)
+# Go to: Google Account → Security → 2-Step Verification → App passwords
+passwd.command = "pass show email/gmail-app-password"
+
+# SMTP (sending emails)  
+[accounts.gmail.smtp]
+host = "smtp.gmail.com"
+port = 465
+login = "your-email@gmail.com"
+passwd.command = "pass show email/gmail-app-password"
+
+# Folder mappings
+[accounts.gmail.mailbox-list]
+drafts = "[Gmail]/Drafts"
+sent = "[Gmail]/Sent Mail"
+trash = "[Gmail]/Trash"
+
+# Message list settings
+[listing]
+[listing.messages]
+page-size = 20
+
+# Message reading
+[message.read]
+[message.read.headers]
+show = ["From", "To", "Subject", "Date"]
+
+# Your affiliate senders to monitor
+[affiliate-monitoring]
+# Add specific senders to filter
+senders = [
+  "noreply@medichecks.com",
+  "support@optimale.co.uk",
+  "partners@descript.com",
+  "noreply@partnerstack.com"
+]

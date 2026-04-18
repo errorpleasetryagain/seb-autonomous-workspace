@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adam's Site Portfolio Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: #0f0f11;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+
+  .header {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-left h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: -0.5px;
+  }
+
+  .header-left p {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .last-updated {
+    font-size: 13px;
+    color: #475569;
+    background: #1e293b;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+  }
+
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .site-card {
+    background: #1a1a24;
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid #2a2a38;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .card-male::before { background: #C0392B; }
+  .card-lift::before { background: #84CC16; }
+  .card-fuel::before { background: #D97706; }
+
+  .site-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .site-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .site-male { color: #ef4444; }
+  .site-lift { color: #a3e635; }
+  .site-fuel { color: #fbbf24; }
+
+  .site-url {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 3px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .status-live {
+    background: rgba(34,197,94,0.12);
+    color: #4ade80;
+    border: 1px solid rgba(34,197,94,0.25);
+  }
+
+  .status-building {
+    background: rgba(251,191,36,0.12);
+    color: #fbbf24;
+    border: 1px solid rgba(251,191,36,0.25);
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .stat-box {
+    background: #111118;
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid #1e1e2e;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+
+  .stat-value.highlight-male { color: #ef4444; }
+  .stat-value.highlight-lift { color: #a3e635; }
+  .stat-value.highlight-fuel { color: #fbbf24; }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #475569;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .content-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+
+  .content-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: #94a3b8;
+    padding: 5px 8px;
+    background: #111118;
+    border-radius: 5px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .content-item:hover { border-left-color: #334155; }
+
+  .content-icon {
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  .pillars-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .pillar-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #2a3548;
+  }
+
+  .action-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .action-btn {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s;
+  }
+
+  .action-btn:hover { opacity: 0.8; }
+
+  .btn-primary-male { background: #C0392B; color: #fff; }
+  .btn-primary-lift { background: #65a30d; color: #fff; }
+  .btn-primary-fuel { background: #b45309; color: #fff; }
+  .btn-secondary { background: #1e293b; color: #94a3b8; border: 1px solid #334155; }
+
+  .divider {
+    height: 1px;
+    background: #2a2a38;
+    margin: 18px 0;
+  }
+
+  /* Bottom strip */
+  .bottom-strip {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .bottom-strip { grid-template-columns: 1fr; }
+  }
+
+  .strip-card {
+    background: #1a1a24;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #2a2a38;
+  }
+
+  .strip-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .todo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .todo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12.5px;
+    color: #94a3b8;
+  }
+
+  .todo-check {
+    width: 14px; height: 14px;
+    min-width: 14px;
+    border-radius: 3px;
+    border: 1.5px solid #334155;
+    background: transparent;
+    margin-top: 2px;
+  }
+
+  .todo-check.done {
+    background: #16a34a;
+    border-color: #16a34a;
+    position: relative;
+  }
+
+  .todo-check.done::after {
+    content: '✓';
+    position: absolute;
+    top: -2px; left: 1px;
+    font-size: 10px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .affiliate-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .affiliate-table th {
+    text-align: left;
+    color: #475569;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 10.5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2a2a38;
+  }
+
+  .affiliate-table td {
+    padding: 7px 0;
+    color: #94a3b8;
+    border-bottom: 1px solid #1e293b;
+    vertical-align: middle;
+  }
+
+  .affiliate-table td:last-child {
+    text-align: right;
+  }
+
+  .aff-status {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+  }
+
+  .aff-urgent { background: #ef4444; }
+  .aff-done { background: #4ade80; }
+  .aff-later { background: #fbbf24; }
+
+  .revenue-bar {
+    background: #111118;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+  }
+
+  .revenue-bar-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+
+  .revenue-bar-header strong {
+    color: #94a3b8;
+    font-size: 13px;
+  }
+
+  .bar-track {
+    height: 5px;
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to right, #C0392B, #ef4444);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>Portfolio Dashboard</h1>
+    <p>Passive income sites — current status and progress</p>
+  </div>
+  <div class="last-updated">Updated 30 March 2026</div>
+</div>
+
+<!-- Main 3-site grid -->
+<div class="grid">
+
+  <!-- MALEOPTIMAL -->
+  <div class="site-card card-male">
+    <div class="site-header">
+      <div>
+        <div class="site-name site-male">maleoptimal.co.uk</div>
+        <div class="site-url">Testosterone & hormone optimisation · UK</div>
+      </div>
+      <span class="status-badge status-building">
+        <span class="status-dot"></span>Building
+      </span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-label">Articles</div>
+        <div class="stat-value highlight-male">25+</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Pillars</div>
+        <div class="stat-value">5</div>
+      </div>
+    </div>
+
+    <div class="section-label">Content Pillars</div>
+    <div class="pillars-grid">
+      <span class="pillar-tag">Foundations</span>
+      <span class="pillar-tag">Supplements</span>
+      <span class="pillar-tag">TRT & Clinical</span>
+      <span class="pillar-tag">Peptides</span>
+      <span class="pillar-tag">Lifestyle</span>
+    </div>
+
+    <div class="section-label">Recent Guides</div>
+    <div class="content-list">
+      <div class="content-item"><span class="content-icon">📄</span>Anabolic Steroids Educational Reference</div>
+      <div class="content-item"><span class="content-icon">📄</span>Human Growth Hormone: Complete Guide</div>
+      <div class="content-item"><span class="content-icon">📄</span>Peptides: Complete Reference Guide</div>
+      <div class="content-item"><span class="content-icon">📄</span>Testosterone Cypionate Profile</div>
+      <div class="content-item"><span class="content-icon">📄</span>Male Longevity Stack</div>
+      <div class="content-item"><span class="content-icon">📄</span>UK TRT Clinics Compared</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Top Affiliate Opportunities</div>
+    <div class="content-list">
+      <div class="content-item"><span class="content-icon">💰</span>Optimale — £30–50/referral</div>
+      <div class="content-item"><span class="content-icon">💰</span>Medichecks — ~10–15% per test</div>
+      <div class="content-item"><span class="content-icon">💰</span>iHerb supplements — 5–10%</div>
+    </div>
+
+    <div class="action-row">
+      <a href="https://maleoptimal.co.uk" target="_blank" class="action-btn btn-primary-male">View Site ↗</a>
+      <button class="action-btn btn-secondary" onclick="alert('Open ~/Documents/Claude/Projects/Passive websites/glwc-framework')">Open Folder</button>
+    </div>
+  </div>
+
+  <!-- LIFTLAB -->
+  <div class="site-card card-lift">
+    <div class="site-header">
+      <div>
+        <div class="site-name site-lift">liftlab.co.uk</div>
+        <div class="site-url">Aesthetic physique training · 18–35 · UK</div>
+      </div>
+      <span class="status-badge status-building">
+        <span class="status-dot"></span>Building
+      </span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-label">Articles</div>
+        <div class="stat-value highlight-lift">12+</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Pillars</div>
+        <div class="stat-value">4</div>
+      </div>
+    </div>
+
+    <div class="section-label">Content Pillars</div>
+    <div class="pillars-grid">
+      <span class="pillar-tag">Training</span>
+      <span class="pillar-tag">Supplements</span>
+      <span class="pillar-tag">Aesthetics</span>
+      <span class="pillar-tag">Nutrition</span>
+    </div>
+
+    <div class="section-label">Recent Guides</div>
+    <div class="content-list">
+      <div class="content-item"><span class="content-icon">📄</span>Best Gyms in the UK</div>
+      <div class="content-item"><span class="content-icon">📄</span>Body Recomposition Guide</div>
+      <div class="content-item"><span class="content-icon">📄</span>How to Get Wider Shoulders</div>
+      <div class="content-item"><span class="content-icon">📄</span>Upper Body Aesthetics Workout</div>
+      <div class="content-item"><span class="content-icon">📄</span>High Volume Training Guide</div>
+      <div class="content-item"><span class="content-icon">📄</span>Best Gym Wear UK</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Top Affiliate Opportunities</div>
+    <div class="content-list">
+      <div class="content-item"><span class="content-icon">💰</span>Gymshark — 4–10% via Rakuten</div>
+      <div class="content-item"><span class="content-icon">💰</span>MyProtein — 8% per sale</div>
+      <div class="content-item"><span class="content-icon">💰</span>Bulk creatine/protein — 8%</div>
+    </div>
+
+    <div class="action-row">
+      <a href="https://liftlab.co.uk" target="_blank" class="action-btn btn-primary-lift">View Site ↗</a>
+      <button class="action-btn btn-secondary" onclick="alert('Open ~/Documents/Claude/Projects/Passive websites/liftlab-framework')">Open Folder</button>
+    </div>
+  </div>
+
+  <!-- FUEL-OPTIMAL -->
+  <div class="site-card card-fuel">
+    <div class="site-header">
+      <div>
+        <div class="site-name site-fuel">fuel-optimal.co.uk</div>
+        <div class="site-url">Nutrition & wellness · men over 40 · UK</div>
+      </div>
+      <span class="status-badge status-building">
+        <span class="status-dot"></span>Building
+      </span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-label">Articles</div>
+        <div class="stat-value highlight-fuel">6+</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Pillars</div>
+        <div class="stat-value">3</div>
+      </div>
+    </div>
+
+    <div class="section-label">Content Pillars</div>
+    <div class="pillars-grid">
+      <span class="pillar-tag">Nutrition</span>
+      <span class="pillar-tag">Supplements</span>
+      <span class="pillar-tag">Gut Health</span>
+    </div>
+
+    <div class="section-label">Recent Guides</div>
+    <div class="content-list">
+      <div class="content-item"><span class="content-icon">📄</span>Omega-3 Guide for Men Over 40</div>
+      <div class="content-item"><span class="content-icon">📄</span>Gut Health Men Over 40</div>
+      <div class="content-item"><span class="content-icon">📄</span>Best Supplements Men Over 40</div>
+      <div class="content-item"><span class="content-icon">📄</span>Intermittent Fasting Men Over 40</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Top Affiliate Opportunities</div>
+    <div class="content-list">
+      <div class="content-item"><span class="content-icon">💰</span>Bare Biology omega-3 — ~10%</div>
+      <div class="content-item"><span class="content-icon">💰</span>Nordic Naturals — ~10%</div>
+      <div class="content-item"><span class="content-icon">💰</span>Amazon UK health — 4%</div>
+    </div>
+
+    <div class="action-row">
+      <a href="https://fuel-optimal.co.uk" target="_blank" class="action-btn btn-primary-fuel">View Site ↗</a>
+      <button class="action-btn btn-secondary" onclick="alert('Open ~/Documents/Claude/Projects/Passive websites/fuel-optimal-framework')">Open Folder</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bottom strip -->
+<div class="bottom-strip">
+
+  <!-- To-Do -->
+  <div class="strip-card">
+    <h3>⚡ Priority Actions</h3>
+    <ul class="todo-list">
+      <li class="todo-item">
+        <div class="todo-check done"></div>
+        <span>Write AAS educational reference guide</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check done"></div>
+        <span>Write HGH full compound profile</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check done"></div>
+        <span>Write Tongkat Ali deep dive</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Sign up: Amazon UK Associates</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Sign up: Medichecks affiliate</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Sign up: iHerb, MyProtein, Bulk</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Email Optimale re: referral programme</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Fix Vercel mobile black screen (full account token)</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Set up email capture + lead magnet</span>
+      </li>
+      <li class="todo-item">
+        <div class="todo-check"></div>
+        <span>Publish bloodwork PDF lead magnet</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Affiliate sign-up status -->
+  <div class="strip-card">
+    <h3>🔗 Affiliate Sign-Ups</h3>
+    <table class="affiliate-table">
+      <thead>
+        <tr>
+          <th>Programme</th>
+          <th>Rate</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Amazon UK Associates</td>
+          <td>1–10%</td>
+          <td><span class="aff-status aff-urgent" title="Urgent"></span></td>
+        </tr>
+        <tr>
+          <td>Medichecks</td>
+          <td>10–15%</td>
+          <td><span class="aff-status aff-urgent"></span></td>
+        </tr>
+        <tr>
+          <td>iHerb</td>
+          <td>5–10%</td>
+          <td><span class="aff-status aff-urgent"></span></td>
+        </tr>
+        <tr>
+          <td>MyProtein</td>
+          <td>8%</td>
+          <td><span class="aff-status aff-urgent"></span></td>
+        </tr>
+        <tr>
+          <td>Bulk</td>
+          <td>8%</td>
+          <td><span class="aff-status aff-urgent"></span></td>
+        </tr>
+        <tr>
+          <td>Optimale</td>
+          <td>£30–50/ref</td>
+          <td><span class="aff-status aff-urgent"></span></td>
+        </tr>
+        <tr>
+          <td>Oura Ring</td>
+          <td>5–10%</td>
+          <td><span class="aff-status aff-later"></span></td>
+        </tr>
+        <tr>
+          <td>Garmin UK</td>
+          <td>3–8%</td>
+          <td><span class="aff-status aff-later"></span></td>
+        </tr>
+        <tr>
+          <td>Gymshark</td>
+          <td>4–10%</td>
+          <td><span class="aff-status aff-later"></span></td>
+        </tr>
+        <tr>
+          <td>Bare Biology</td>
+          <td>~10%</td>
+          <td><span class="aff-status aff-later"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="margin-top:12px;display:flex;gap:12px;font-size:11px;color:#475569">
+      <span><span class="aff-status aff-urgent" style="display:inline-block;margin-right:4px"></span>Urgent</span>
+      <span><span class="aff-status aff-later" style="display:inline-block;margin-right:4px"></span>Soon</span>
+      <span><span class="aff-status aff-done" style="display:inline-block;margin-right:4px"></span>Done</span>
+    </div>
+  </div>
+
+  <!-- Revenue projections -->
+  <div class="strip-card">
+    <h3>📈 Revenue Projections</h3>
+
+    <div style="margin-bottom:16px">
+      <div class="revenue-bar">
+        <div class="revenue-bar-header">
+          <strong>Month 6–9 (first traction)</strong>
+          <span>£50–300/mo</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:8%;background:linear-gradient(to right,#C0392B,#ef4444)"></div></div>
+      </div>
+      <div class="revenue-bar">
+        <div class="revenue-bar-header">
+          <strong>Month 12 (1–2 sites)</strong>
+          <span>£500–2,000/mo</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:22%;background:linear-gradient(to right,#b45309,#fbbf24)"></div></div>
+      </div>
+      <div class="revenue-bar">
+        <div class="revenue-bar-header">
+          <strong>Year 2 (3 sites)</strong>
+          <span>£3,000–8,000/mo</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(to right,#4d7c0f,#a3e635)"></div></div>
+      </div>
+      <div class="revenue-bar">
+        <div class="revenue-bar-header">
+          <strong>Year 3 (5 sites)</strong>
+          <span>£6,000–15,000/mo</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(to right,#1d4ed8,#60a5fa)"></div></div>
+      </div>
+    </div>
+
+    <div style="background:#111118;border-radius:8px;padding:12px 14px;border:1px solid #1e1e2e">
+      <div class="section-label" style="margin-bottom:8px">Month 9–12 Breakdown (est.)</div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;padding:4px 0;border-bottom:1px solid #1e293b">
+        <span>Medichecks bloodwork refs (30×)</span><span style="color:#94a3b8">£300</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;padding:4px 0;border-bottom:1px solid #1e293b">
+        <span>TRT clinic referrals (8×)</span><span style="color:#94a3b8">£320</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;padding:4px 0;border-bottom:1px solid #1e293b">
+        <span>Supplements all sites (150×)</span><span style="color:#94a3b8">£600</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748b;padding:4px 0;border-bottom:1px solid #1e293b">
+        <span>Gym wear / wearables</span><span style="color:#94a3b8">£310</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:#e2e8f0;font-weight:700;padding:8px 0 0">
+        <span>Total estimate</span><span style="color:#ef4444">~£1,530</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="max-width:1200px;margin:20px auto 0;text-align:center;font-size:12px;color:#334155">
+  Local dashboard · Not published · <a href="AFFILIATE_LINKS_TRACKER.md" style="color:#475569">Affiliate Tracker</a>
+</div>
+
+</body>
+</html>

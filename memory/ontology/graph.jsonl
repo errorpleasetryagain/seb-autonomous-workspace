@@ -1,0 +1,24 @@
+# Ontology Graph - Append-only JSONL format
+{"op":"create","entity":{"id":"person_001","type":"Person","properties":{"name":"Adam","email":"","timezone":"GMT","notes":"Dyslexic, London energy, appreciates wit"},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"create","entity":{"id":"person_002","type":"Person","properties":{"name":"Seb","notes":"Shape-shifting digital operator, emoji 🎭"},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"create","entity":{"id":"proj_001","type":"Project","properties":{"name":"Agent Workspace Setup","status":"active","goals":["Install skills","Configure proactive agent","Demo all features"]},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"relate","from":"proj_001","rel":"has_owner","to":"person_001","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"create","entity":{"id":"task_001","type":"Task","properties":{"title":"Install multi-search-engine skill","status":"done","priority":"high"},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"relate","from":"task_001","rel":"for_project","to":"proj_001","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"create","entity":{"id":"task_002","type":"Task","properties":{"title":"Install ontology skill","status":"done","priority":"high"},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"relate","from":"task_002","rel":"for_project","to":"proj_001","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"create","entity":{"id":"task_003","type":"Task","properties":{"title":"Install proactive-agent skill","status":"done","priority":"high"},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"relate","from":"task_003","rel":"for_project","to":"proj_001","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"create","entity":{"id":"task_004","type":"Task","properties":{"title":"Demo all skills to Adam","status":"done","priority":"high"},"relations":[],"created":"2026-04-16T08:10:00Z","updated":"2026-04-16T08:10:00Z"}}
+{"op":"relate","from":"task_004","rel":"for_project","to":"proj_001","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"relate","from":"task_001","rel":"blocks","to":"task_002","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"relate","from":"task_002","rel":"blocks","to":"task_003","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"relate","from":"task_003","rel":"blocks","to":"task_004","properties":{},"created":"2026-04-16T08:10:00Z"}
+{"op":"create","entity":{"id":"doc_001","type":"Document","properties":{"title":"AG2 vs CrewAI vs LangGraph vs OpenAI Agents SDK (2026)","url":"https://cowork.ink/blog/ag2-vs-crewai-vs-langgraph-openai-agents-sdk/","summary":"Comparison of AG2, CrewAI, LangGraph and OpenAI Agents SDK frameworks"},"relations":[],"created":"2026-04-16T08:12:00Z","updated":"2026-04-16T08:12:00Z"}}
+{"op":"relate","from":"doc_001","rel":"for_project","to":"proj_001","properties":{},"created":"2026-04-16T08:12:00Z"}
+{"op":"create","entity":{"id":"proj_002","type":"Project","properties":{"name":"Nightly Autonomous Projects","status":"active","goals":["Build overnight MVP","Deliver morning briefing","Iterate to greatness"]},"relations":[],"created":"2026-04-16T22:20:00Z","updated":"2026-04-16T22:20:00Z"}}
+{"op":"relate","from":"proj_002","rel":"has_owner","to":"person_001","properties":{},"created":"2026-04-16T22:20:00Z"}
+{"op":"create","entity":{"id":"cron_001","type":"Task","properties":{"title":"Nightly projects cron job","status":"active","priority":"high"},"relations":[],"created":"2026-04-16T22:20:00Z","updated":"2026-04-16T22:20:00Z"}}
+{"op":"relate","from":"cron_001","rel":"for_project","to":"proj_002","properties":{},"created":"2026-04-16T22:20:00Z"}
+{"op":"create","entity":{"id":"cron_002","type":"Task","properties":{"title":"Morning briefing cron job","status":"active","priority":"high"},"relations":[],"created":"2026-04-16T22:20:00Z","updated":"2026-04-16T22:20:00Z"}}
+{"op":"relate","from":"cron_002","rel":"for_project","to":"proj_002","properties":{},"created":"2026-04-16T22:20:00Z"}
