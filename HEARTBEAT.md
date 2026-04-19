@@ -30,8 +30,8 @@ Periodic self-improvement checklist.
 
 ---
 
-*Last run:* 2026-04-19 18:38
-*Next priority:* ✅ **BASHTUTOR V1.5.10 SHIPPED** — AI integration fixed, macOS compatible
+*Last run:* 2026-04-19 18:45
+*Next priority:* ✅ **BASHTUTOR V1.6.0** — Smart pattern matching (no AI needed for common commands)
 
 **🏠 /A/I/O/S/ Dashboard Status:**
 
@@ -74,9 +74,14 @@ Periodic self-improvement checklist.
 - 🎯 AI explanations now working
 
 **6:35 PM Heartbeat:**
-- 🔧 Fixed Dashboard Autonomy cron (delivery mode → session)
-- ⚠️ OpenClaw ollama timeouts (compaction active, model overloaded)
+- 🔧 Fixed Dashboard Autonomy cron (recreated with --session main)
+- ⚠️ OpenClaw ollama timeouts (model overloaded, compaction active)
 - ✅ Dashboard stable (PID 2980)
+
+**6:45 PM Heartbeat:**
+- 📦 BashTutor v1.6.0 on GitHub (smart pattern matching)
+- 🔄 Reinstall needed to get latest patterns
+- ✅ New cron job created (e925401e)
 
 **Skills Active (10):**
 - task-planner, project-tracker, task-runner
@@ -85,9 +90,9 @@ Periodic self-improvement checklist.
 - ima-all-ai, claw-skill-audit
 
 **Git Status:** 
-- ✅ Bashtutor committed & pushed (v1.5.10)
+- ✅ Bashtutor v1.6.0 on GitHub
 - ⚠️ Dashboard has uncommitted changes
 
 ---
 
-*Last updated: 2026-04-19 6:38 PM*
+*Last updated: 2026-04-19 6:45 PM*
